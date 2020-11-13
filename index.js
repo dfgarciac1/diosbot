@@ -2,7 +2,14 @@ const { Client, MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const client = new Client();
 const dotenv = require('dotenv');
-
+function Pagina(){
+    let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
+ ,"http://pikachize.eye-of-newt.com/"]
+ Numero =(Math.random()* 5)
+ Hola=Integer.parseInt(Numero)
+ primero[Hola]
+ return primero
+}
 function Suma (){
     Numero1=Math.random()
     Numero2=Math.random()
@@ -37,6 +44,10 @@ client.on('message', async msg => {
         msg.reply( Suma())
 
     }
+    if(msg.content==='PaginaR'){
+        msg.reply(Pagina())
+        
+    }
     if (msg.content === 'cat') {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
 
@@ -63,7 +74,7 @@ client.on('message', async msg => {
            icon_url: client.user.avatarURL()
        },      
        title: "Comandos",
-     description: " Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     description: " PaginaR,Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
 
      
      }
