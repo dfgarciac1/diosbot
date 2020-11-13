@@ -42,15 +42,37 @@ client.on('message', async msg => {
         msg.reply('ping')
     }
     if (msg.content === 'help') {
-        msg.reply('Los comandos son hello,!test,!puto,!suicide,!JS,!pretty,React')
     }
+     
+   if (msg.content === 'Github') {
+    msg.channel.send({embed: {
+       color: 3447003,
+       author: {
+           name: client.user.username,
+           icon_url: client.user.avatarURL()
+       },      
+       title: "GitHub De un Dios",
+     description: " Los comandos son hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     
+     }
+ });
+    
+}
 
     if (msg.content === 'hello') {
         msg.channel.send(`Hello ${msg.author}`);
     }
+    if (msg.content === 'Alea') {
+        
+        msg.channel.send( Math.random());
+    }
+
 
     if (msg.content.includes('!test')) {
         msg.channel.send('Este grupo es de dioses');
+    }
+    if (msg.content.includes('!pretty')) {
+        msg.channel.send('Eres hermoso te lo juro por diegito');
     }
     if (msg.content.includes('!JS')) {
         msg.channel.send('Viva el lenguaje ');
@@ -77,6 +99,10 @@ client.on('message', async msg => {
    
     if (msg.content === 'ping') {
         msg.reply('pong')
+    }
+    if (msg.content === 'Camilo') {
+        msg.reply('Te quiero onichan Camilo')
+        msg.reply('Yamete')
     }
   
    if (msg.content === 'Github') {
