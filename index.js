@@ -41,10 +41,8 @@ client.on('message', async msg => {
     if (msg.content === 'pong') {
         msg.reply('ping')
     }
-    if (msg.content === 'help') {
-    }
-     
-   if (msg.content === 'Github') {
+    
+   if (msg.content === 'help') {
     msg.channel.send({embed: {
        color: 3447003,
        author: {
