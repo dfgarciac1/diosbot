@@ -47,6 +47,10 @@ client.on('message', async msg => {
         msg.reply(Pagina())
         
     }
+    if(msg.content==='?Java'){
+        msg.reply("https://docs.oracle.com/javase/7/docs/api/")
+       
+    }
     if (msg.content === 'cat') {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
 
@@ -73,7 +77,7 @@ client.on('message', async msg => {
            icon_url: client.user.avatarURL()
        },      
        title: "Comandos",
-     description: " PaginaR,Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     description: " ?Java,PaginaR,Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
 
      
      }
