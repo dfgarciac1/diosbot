@@ -70,7 +70,7 @@ client.on('message', async msg => {
     }
     if (msg.content === '->JS') {
         msg.reply('https://developer.mozilla.org/es/docs/Web/JavaScript')
-    
+    }
     
    if (msg.content === 'help') {
     msg.channel.send({embed: {
