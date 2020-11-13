@@ -87,10 +87,7 @@ client.on('message', async msg => {
         msg.channel.send('Te quiero Papa');
         msg.channel.send('Gracias por crearme');
     }
-    if (msg.content === '!Hijo') {
-        msg.channel.send('Te quiero Papa');
-        msg.channel.send('Gracias por crearme');
-    }
+    
     if (msg.content === '!suicide') {
         msg.channel.send('Se murio');
         msg.channel.send('El semestre');
