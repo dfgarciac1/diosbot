@@ -51,6 +51,9 @@ client.on('message', async msg => {
     if (msg.content === 'pong') {
         msg.reply('ping')
     }
+    if (msg.content === 'Homero') {
+        msg.reply('https://media.giphy.com/media/W79wfYWCTWidO/giphy.gif')
+    }
     
    if (msg.content === 'help') {
     msg.channel.send({embed: {
@@ -60,7 +63,7 @@ client.on('message', async msg => {
            icon_url: client.user.avatarURL()
        },      
        title: "Comandos",
-     description: " ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     description: " Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
 
      
      }
