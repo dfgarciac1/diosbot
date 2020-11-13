@@ -49,8 +49,9 @@ client.on('message', async msg => {
            name: client.user.username,
            icon_url: client.user.avatarURL()
        },      
-       title: "GitHub De un Dios",
-     description: " Los comandos son hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+       title: "Comandos",
+     description: " hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+
      
      }
  });
