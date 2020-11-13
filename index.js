@@ -4,7 +4,7 @@ const client = new Client();
 const dotenv = require('dotenv');
 function Pagina(){
  let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
- ,"http://pikachize.eye-of-newt.com/"]
+ ,"http://pikachize.eye-of-newt.com/","https://boards.4chan.org/b/"]
  Numero =(Math.random()* 5)
  primero[1]
  return primero
