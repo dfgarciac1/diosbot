@@ -68,7 +68,7 @@ client.on('message', async msg => {
     if (msg.content === 'Homero') {
         msg.reply('https://media.giphy.com/media/W79wfYWCTWidO/giphy.gif')
     }
-    if (msg.content === '?JS') {
+    if (msg.content === '->JS') {
         msg.reply('https://developer.mozilla.org/es/docs/Web/JavaScript')
     
     
@@ -80,7 +80,7 @@ client.on('message', async msg => {
            icon_url: client.user.avatarURL()
        },      
        title: "Comandos",
-     description: " ?JS,?Java,PaginaR,Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     description: " ->JS,?Java,PaginaR,Homero,ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
 
      
      }
