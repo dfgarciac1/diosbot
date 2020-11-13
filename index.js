@@ -4,10 +4,8 @@ const client = new Client();
 const dotenv = require('dotenv');
 
 function Suma (){
-    var numero1 = document.getElementById("numero1").value;
-  var numero2 = document.getElementById("numero2").value;
 
-  var suma = numero1 + numero2;
+  var suma = 2+2
   return suma;
 }
 
@@ -34,8 +32,8 @@ client.on('message', async msg => {
         msg.reply('pong')
     }
     if(msg.content==='Suma'){
-       
-        msg.reply(Suma())
+        Suma()
+        msg.reply()
 
     }
     if (msg.content === 'cat') {
