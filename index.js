@@ -4,8 +4,9 @@ const client = new Client();
 const dotenv = require('dotenv');
 
 function Suma (){
-
-  var suma = 2+2
+    Numero1=Math.random()
+    Numero2=Math.random()
+  var suma = Numero1+Numero2
   return suma;
 }
 
