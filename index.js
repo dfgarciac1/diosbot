@@ -50,7 +50,7 @@ client.on('message', async msg => {
            icon_url: client.user.avatarURL()
        },      
        title: "Comandos",
-     description: " cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
+     description: " ReactComponente,cat,hello,!test,!puto,!suicide,!JS,!pretty,React,!Hijo,Camilo,Github,Alea"
 
      
      }
