@@ -3,12 +3,11 @@ const fetch = require('node-fetch');
 const client = new Client();
 const dotenv = require('dotenv');
 function Pagina(){
-    let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
+ let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
  ,"http://pikachize.eye-of-newt.com/"]
  Numero =(Math.random()* 5)
- Hola=Integer.parseInt(Numero)
- primero[Hola]
- return primero
+ page=primero[Numero]
+ return page
 }
 function Suma (){
     Numero1=Math.random()
