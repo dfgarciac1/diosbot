@@ -32,8 +32,8 @@ client.on('message', async msg => {
         msg.reply('pong')
     }
     if(msg.content==='Suma'){
-        Suma()
-        msg.reply()
+       
+        msg.reply( Suma())
 
     }
     if (msg.content === 'cat') {
