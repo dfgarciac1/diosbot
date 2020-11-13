@@ -3,7 +3,13 @@ const fetch = require('node-fetch');
 const client = new Client();
 const dotenv = require('dotenv');
 
+function Suma (){
+    var numero1 = document.getElementById("numero1").value;
+  var numero2 = document.getElementById("numero2").value;
 
+  var suma = numero1 + numero2;
+  return suma;
+}
 
 
 client.on('ready', () => {
@@ -26,6 +32,11 @@ client.on('message', async msg => {
     const querystring = require('querystring');
     if (msg.content === 'ping') {
         msg.reply('pong')
+    }
+    if(msg.content==='Suma'){
+       
+        msg.reply(Suma())
+
     }
     if (msg.content === 'cat') {
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
