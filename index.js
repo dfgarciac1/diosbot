@@ -1,6 +1,7 @@
 const { Client, MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const client = new Client();
+const  minecra= require('minecraft-server-util');
 const dotenv = require('dotenv');
 function Pagina(){
  let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
@@ -95,7 +96,16 @@ client.on('message', async msg => {
         
         msg.channel.send( Math.random());
     }
-
+    
+    if(msg.content.includes('@ServerM')){
+          minecra.status('play.hypixel.net') // port is default 25565
+          .then((response) => {
+              console.log(response);
+          })
+          .catch((error) => {
+              throw error;
+          });
+    }
 
     if (msg.content.includes('!test')) {
         msg.channel.send('Este grupo es de dioses');
