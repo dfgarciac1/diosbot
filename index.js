@@ -52,19 +52,7 @@ client.on('message', async msg => {
         msg.reply('pong')
     }
 
-      if (msg.content !== "Jojo") return;
-        try {
-          const results = await googleImages.search("Jojos");
-          const reply = !results.length ?
-            "No results" :
-            new Attachment(results[Math.floor(Math.random() * results.length)].url);
-          msg.channel.send(reply);
-        }
-        catch (e) {
-          console.error(e);
-          msg.channel.send("Error happened, see the console");
-        }
-      
+     
     if(msg.content==='Suma'){
        
         msg.reply( Suma())
