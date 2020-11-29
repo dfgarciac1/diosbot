@@ -100,12 +100,13 @@ client.on('message', async msg => {
     if(msg.content.includes('@ServerM')){
           minecra.status('play.hypixel.net') // port is default 25565
           .then((response) => {
-              console.log(response);
+              msg.channel(response);
           })
           .catch((error) => {
-              throw error;
+              msg.channel("Me mori");
           });
     }
+    
 
     if (msg.content.includes('!test')) {
         msg.channel.send('Este grupo es de dioses');
