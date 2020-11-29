@@ -1,9 +1,19 @@
-const { Client, MessageEmbed } = require('discord.js');
+const { Client, Attachment,MessageEmbed } = require('discord.js');
+
 const fetch = require('node-fetch');
 const client = new Client();
 const util = require('minecraft-server-util');
 const dotenv = require('dotenv');
-const PREFIX = '!'
+const PREFIX = '!';
+
+
+
+var images = ["https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.jefsescritor.com%2Fjojos-bizarre-adventure%2F&psig=AOvVaw2DK8RAEgUlljJb4xeW7XPx&ust=1606707454923000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDlmuvppu0CFQAAAAAdAAAAABAJ", 
+"https://www.google.com/url?sa=i&url=https%3A%2F%2Frpp.pe%2Fcultura%2Fasiapop%2Fnetflix-la-primera-temporada-de-jojos-bizarre-adventure-aterrizara-en-la-plataforma-noticia-1183503&psig=AOvVaw2DK8RAEgUlljJb4xeW7XPx&ust=1606707454923000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDlmuvppu0CFQAAAAAdAAAAABAO", 
+
+];
+var image = Math.floor(Math.random() * images.length);
+
 
 function Pagina(){
  let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
@@ -21,17 +31,15 @@ function Suma (){
 
 
 
+
+
 client.on('ready', () => {
     console.log('Bot Now connected!');
     console.log('Logged In as', client.user.tag)
     client.user.setStatus('dnd'); // online, idle, invisible, dnd
-
+    
     console.log('Bot status: ', client.user.presence.status);
 
-    // Bot sending a Message to a text channel called test
-    const testChannel = client.channels.find(x => x.name === 'test')
-    console.log(testChannel)
-    // client.channels.find(c => c.name === 'test').send('Hello Server!')
 
 });
 
@@ -43,6 +51,20 @@ client.on('message', async msg => {
     if (msg.content === 'ping') {
         msg.reply('pong')
     }
+
+      if (msg.content !== "Jojo") return;
+        try {
+          const results = await googleImages.search("Jojos");
+          const reply = !results.length ?
+            "No results" :
+            new Attachment(results[Math.floor(Math.random() * results.length)].url);
+          msg.channel.send(reply);
+        }
+        catch (e) {
+          console.error(e);
+          msg.channel.send("Error happened, see the console");
+        }
+      
     if(msg.content==='Suma'){
        
         msg.reply( Suma())
@@ -61,6 +83,7 @@ client.on('message', async msg => {
 
 	    msg.channel.send(file);
     }
+  
     if (msg.content === 'Java') {
         const { file } = await fetch().then(response => response.json());
 
@@ -74,7 +97,9 @@ client.on('message', async msg => {
         msg.reply('https://media.giphy.com/media/W79wfYWCTWidO/giphy.gif')
     }
     if (msg.content === 'Jojos') {
-        msg.reply('https://elcomercio.pe/resizer/n0mvBdW0-ja0HE3oWwcp7yc5Xf4=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/MFDH5VS7RNBKTIY64OQTYTPMQM.jpg')
+    number = 2;
+    imageNumber = Math.floor (Math.random() * number) + 1;
+    msg.channel.send ({files: ["./jojos/" + imageNumber + ".jpg"]})
     }
     if (msg.content === '->JS') {
         msg.reply('https://developer.mozilla.org/es/docs/Web/JavaScript')
