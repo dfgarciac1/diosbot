@@ -1,8 +1,10 @@
 const { Client, MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const client = new Client();
-const  minecra= require('minecraft-server-util');
+const util = require('minecraft-server-util');
 const dotenv = require('dotenv');
+const PREFIX = '!'
+
 function Pagina(){
  let primero = ["https://cat-bounce.com/","https://es.eurobilltracker.com/welcome/?step=3","https://worlds-highest-website.com/es/#pos1"
  ,"http://pikachize.eye-of-newt.com/","https://boards.4chan.org/b/"]
@@ -18,6 +20,7 @@ function Suma (){
 }
 
 
+
 client.on('ready', () => {
     console.log('Bot Now connected!');
     console.log('Logged In as', client.user.tag)
@@ -31,6 +34,7 @@ client.on('ready', () => {
     // client.channels.find(c => c.name === 'test').send('Hello Server!')
 
 });
+
 
 // Bot listenning messages
 client.on('message', async msg => {
@@ -69,6 +73,9 @@ client.on('message', async msg => {
     if (msg.content === 'Homero') {
         msg.reply('https://media.giphy.com/media/W79wfYWCTWidO/giphy.gif')
     }
+    if (msg.content === 'Jojos') {
+        msg.reply('https://elcomercio.pe/resizer/n0mvBdW0-ja0HE3oWwcp7yc5Xf4=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/MFDH5VS7RNBKTIY64OQTYTPMQM.jpg')
+    }
     if (msg.content === '->JS') {
         msg.reply('https://developer.mozilla.org/es/docs/Web/JavaScript')
     }
@@ -97,15 +104,7 @@ client.on('message', async msg => {
         msg.channel.send( Math.random());
     }
     
-    if(msg.content.includes('@ServerM')){
-          minecra.status('play.hypixel.net') // port is default 25565
-          .then((response) => {
-              msg.channel(response);
-          })
-          .catch((error) => {
-              msg.channel("Me mori");
-          });
-    }
+
     
 
     if (msg.content.includes('!test')) {
@@ -132,6 +131,10 @@ client.on('message', async msg => {
     if (msg.content === '!suicide') {
         msg.channel.send('Se murio');
         msg.channel.send('El semestre');
+    }
+    if (msg.content === '!Server') {
+         
+
     }
    
     if (msg.content === 'ping') {
