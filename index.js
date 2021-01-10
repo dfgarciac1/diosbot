@@ -8,11 +8,12 @@ const PREFIX = '!';
 
 
 
-var images = ["https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.jefsescritor.com%2Fjojos-bizarre-adventure%2F&psig=AOvVaw2DK8RAEgUlljJb4xeW7XPx&ust=1606707454923000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDlmuvppu0CFQAAAAAdAAAAABAJ", 
-"https://www.google.com/url?sa=i&url=https%3A%2F%2Frpp.pe%2Fcultura%2Fasiapop%2Fnetflix-la-primera-temporada-de-jojos-bizarre-adventure-aterrizara-en-la-plataforma-noticia-1183503&psig=AOvVaw2DK8RAEgUlljJb4xeW7XPx&ust=1606707454923000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDlmuvppu0CFQAAAAAdAAAAABAO", 
 
-];
-var image = Math.floor(Math.random() * images.length);
+var images = ["https://elcomercio.pe/resizer/n0mvBdW0-ja0HE3oWwcp7yc5Xf4=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/MFDH5VS7RNBKTIY64OQTYTPMQM.jpg",
+"https://f.rpp-noticias.io/2019/02/28/393439_759441.jpg","https://www.tierragamer.com/wp-content/uploads/2019/08/jojos-bizarre-adventure-eyes-of-heaven-el-juego-para-esperar-la-nueva-temporada-450x300.jpg"]; 
+
+
+var image = Math.floor(Math.random()*2);
 
 
 function Pagina(){
@@ -31,13 +32,11 @@ function Suma (){
 
 
 
-
-
 client.on('ready', () => {
     console.log('Bot Now connected!');
     console.log('Logged In as', client.user.tag)
     client.user.setStatus('dnd'); // online, idle, invisible, dnd
-    
+
     console.log('Bot status: ', client.user.presence.status);
 
 
@@ -51,8 +50,6 @@ client.on('message', async msg => {
     if (msg.content === 'ping') {
         msg.reply('pong')
     }
-
-     
     if(msg.content==='Suma'){
        
         msg.reply( Suma())
@@ -71,7 +68,14 @@ client.on('message', async msg => {
 
 	    msg.channel.send(file);
     }
-  
+    if (msg.content === 'jojo') {
+        let random = new MessageEmbed()
+        .setTitle('Here is your random pic')
+        .setAuthor('mortis')
+        .setImage(String([images[image]]))
+        msg.channel.send(random);
+        console.log(image)
+    }
     if (msg.content === 'Java') {
         const { file } = await fetch().then(response => response.json());
 
@@ -84,11 +88,7 @@ client.on('message', async msg => {
     if (msg.content === 'Homero') {
         msg.reply('https://media.giphy.com/media/W79wfYWCTWidO/giphy.gif')
     }
-    if (msg.content === 'Jojos') {
-    number = 2;
-    imageNumber = Math.floor (Math.random() * number) + 1;
-    msg.channel.send ({files: ["./jojos/" + imageNumber + ".jpg"]})
-    }
+   
     if (msg.content === '->JS') {
         msg.reply('https://developer.mozilla.org/es/docs/Web/JavaScript')
     }
