@@ -12,7 +12,7 @@ const dotenv = require('dotenv');
 const PREFIX = '!';
 const axios  = require('axios');
 const { error, profile, profileEnd } = require('console');
-client.login("Nzk3OTYyOTg1NDQ0MzQzODE5.X_uG8Q.Mjh0CE07LaIH-YbazNhJcDeIqZM");
+client.login("Nzk3OTYyOTg1NDQ0MzQzODE5.X_uG8Q.DwDEm2U5FIVDnkpho4a1MaHOF0Y");
 
 
 var images = ["https://elcomercio.pe/resizer/n0mvBdW0-ja0HE3oWwcp7yc5Xf4=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/MFDH5VS7RNBKTIY64OQTYTPMQM.jpg",
