@@ -1,12 +1,18 @@
 const { Client, Attachment,MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
+const prefix='!';
+const { instagrapi } = require('instagrapi');
+const querystring = require('querystring');
+const config = require("./config.json");
 const fetch = require('node-fetch');
 const client = new Client();
 const util = require('minecraft-server-util');
 const dotenv = require('dotenv');
 const PREFIX = '!';
-
-
+const axios  = require('axios');
+const { error, profile, profileEnd } = require('console');
+client.login(config.BOT_TOKEN);
 
 
 var images = ["https://elcomercio.pe/resizer/n0mvBdW0-ja0HE3oWwcp7yc5Xf4=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/MFDH5VS7RNBKTIY64OQTYTPMQM.jpg",
@@ -45,6 +51,8 @@ client.on('ready', () => {
 
 // Bot listenning messages
 client.on('message', async msg => {
+    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+const command =args.shift();
     console.log(msg.content)
     const querystring = require('querystring');
     if (msg.content === 'ping') {
@@ -63,8 +71,130 @@ client.on('message', async msg => {
         msg.reply("https://docs.oracle.com/javase/7/docs/api/")
        
     }
+    if(command==="Espejo"){
+        let user = msg.mentions.users.first(); 
+        if(!user) user = msg.author; 
+        const embed = new Discord.MessageEmbed() 
+        .setTitle(image) 
+        .setImage(user.displayAvatarURL()) 
+        .setTimestamp() 
+        msg.reply(embed) 
+
+    }
+    if (command === 'urbano') {
+        if (!args.length) {
+          return msg.channel.send('You need to supply a search term!');
+        }
+      
+          const query = querystring.stringify({ term: args.join(' ') });
+          const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
+
+        const { list } = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json());
+        const [answer] = list;
+        const embed = new MessageEmbed()
+	.setColor('#EFFF00')
+	.setTitle(answer.word)
+	.setURL(answer.permalink)
+	.addFields(
+		{ name: 'Definition', value: trim(answer.definition, 1024) },
+		{ name: 'Example', value: trim(answer.example, 1024) },
+		{ name: 'Rating', value: `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.` }
+	);
+
+msg.channel.send(embed);
+    }
+    if (msg.content === 'Dios') {
+        axios.get('https://api.github.com/users/dfgarciac1').then((res =>{
+           let yo= (JSON.stringify(res.data.login))
+           let yo2=(JSON.stringify(res.data.public_repos))
+        const exampleEmbed = new Discord.MessageEmbed()
+        .setTitle("Informacion de mi creador")
+        .addFields({name:"Autor",value:yo},{name:"Github",value:"https://github.com/dfgarciac1"}
+        ,{name:"Repositorios Actuales",value:yo2})
+       
+        msg.reply(exampleEmbed);
+
+
+            
+       }))
+       .catch((err)=>{
+           console.error("Error",err);
+       });
+    }
+    if (command === 'Diosa') {
+        let [name] = args;
+        axios.get(`https://api.github.com/users/${name}/repos`).then((res =>{
+            for(let i=0;i<res.data.length;i++){
+                var yo =[(JSON.stringify(res.data[i].full_name))]
+                let yo1= (JSON.stringify(res.data.created_at))
+                let yo2=(JSON.stringify(res.data.language))
+                const exampleEmbed = new Discord.MessageEmbed()
+                .setTitle("Informacion del repositorio")
+                .addFields({name:"Nombres Repositorio",value:yo})
+               
+                msg.reply(exampleEmbed);
+     
+    
+            }
+          
+            
+       }))
+       .catch((err)=>{
+           console.error("Error",err);
+       });
+    }
+if(command==='Dinero'){
+    let embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setTitle("Server Info")
+    .setImage(msg.guild.iconURL)
+    .setDescription(`${msg.guild}'s information`)
+    .addField("Owner", `The owner of this server is ${msg.guild.owner}`)
+    .addField("Member Count", `This server has ${msg.guild.memberCount} members`)
+    .addField("Emoji Count", `This server has ${msg.guild.emojis.cache.size} emojis`)
+    .addField("Roles Count", `This server has ${msg.guild.roles.cache.size} roles`)
+    
+
+msg.channel.send(embed)
+  };
+ 
+    if (command=== 'Repo') {
+        let [name] = args;
+        axios.get(`https://api.github.com/users/${name}`).then((res =>{
+           let yo= (JSON.stringify(res.data.login))
+           let yo2=(JSON.stringify(res.data.public_repos))
+           let yo3=(JSON.stringify(res.data.avatar_url))
+           let yo4=(JSON.stringify(res.data.created_at))
+           let yo5=(JSON.stringify(res.data.updated_at))
+        const exampleEmbed = new Discord.MessageEmbed()
+
+        .setTitle("Informacion del repositorio")
+        .addFields({name:"La jeta",value:yo3},{name:"Autor",value:yo},{name:"Github",value:`https://github.com/${name}`}
+        ,{name:"Repositorios Actuales",value:yo2},
+        {name:"Fecha de creacion",value:yo4},
+        {name:"Fecha de ultimo archivo subido",value:yo5})
+       
+        msg.reply(exampleEmbed);
+
+
+            
+       }))
+       .catch((err)=>{
+           console.error("Error",err);
+       });
+    }
+    if (command=== "asl") {
+        let [age, sex, location] = args;
+        msg.reply(`Hello ${msg.author.username}, I see you're a ${age} year old ${sex} from ${location}. Wanna date?`);
+      }
     if (msg.content === 'cat') {
-        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+        const { file} = await
+ fetch('https://aws.random.cat/meow').then(response => response.json());
+
+	    msg.channel.send(file);
+    }
+    if (msg.content === 'money') {
+        const { file } = await fetch('https://api.github.com/users/dfgarciac1').then(response => response.json());
 
 	    msg.channel.send(file);
     }
@@ -81,7 +211,11 @@ client.on('message', async msg => {
 
 	    msg.channel.send(file);
     }
-    
+    if(msg.content==='Invita'){
+        client.fetchInvite('https://discord.gg/ttFXH5Xsmx')
+     .then(invite => msg.channel.send(`Invita al grupo con  https://discord.gg/ttFXH5Xsmx`))
+   .catch(console.error);
+    }
     if (msg.content === 'pong') {
         msg.reply('ping')
     }
@@ -229,5 +363,3 @@ if (msg.content === 'ReactComponente') {
 });
 
 
-const token = 'Nzc2NTE4ODk5MDI1OTY5MjA0.X62DlA.e_amPyxQ9GGpgBZfdixQWs4rlQ8';
-client.login(token);
